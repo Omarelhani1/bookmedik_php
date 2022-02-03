@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  bookmedik:
+    container_name: bookmedik
+    image: 1423o/bookmedik_php:v1 
+    restart: always
+    environment:
+      DATABASE_USER: omar
+      DATABASE_PASSWORD: omar
+      DATABASE_HOST: mariadb
+    ports:
+      - 8080:80
+    depends_on:
+      - mariadb
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: bookmedik
+      MYSQL_USER: omar
+      MYSQL_PASSWORD: omar
+      MYSQL_ROOT_PASSWORD: omar
